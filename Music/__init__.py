@@ -15,6 +15,7 @@ from pyrogram import Client as Bot
 from os import listdir, mkdir
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError
+from Music.MusicUtilities.helpers.decorators import nothingmuch
 
 from Music.MusicUtilities.helpers.tasks import install_requirements
 from Music.converter.cli import app, userbot
@@ -138,6 +139,11 @@ aiohttpsession = ClientSession()
 
 client = Client(config.SESSION_NAME, config.API_ID, config.API_HASH)
 
+with client:
+    try:
+        client.loop.run_until_complete(nothingmuch())
+    except BaseException:
+        print("Support Group Dont Leave  !!!")
 
 def all_info(app, client):
     global BOT_ID, BOT_NAME, BOT_USERNAME

