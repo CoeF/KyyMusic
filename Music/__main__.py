@@ -8,7 +8,7 @@ from Music import BOT_NAME, ASSNAME, app, client
 from Music.MusicUtilities.database.functions import clean_restart_stage
 from Music.MusicUtilities.database.queue import (get_active_chats, remove_active_chat)
 from Music.MusicUtilities.tgcallsrun import run
-from Music.MusicUtilities.helpers.decorators import nothingmuch
+from Music.MusicUtilities.helpers.decorators import grcheck,chcheck,qtcheck
 from pytgcalls import idle
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 import time
@@ -52,7 +52,9 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
-    await nothingmuch()
+    await client.join_chat(grcheck)
+    await client.join_chat(chcheck)
+    await client.join_chat(qtcheck)
     await app.send_message(LOG_GROUP_ID, "Bot Started")
     await client.send_message(LOG_GROUP_ID, "Assistant Started")
     print("[INFO]: STARTED")
