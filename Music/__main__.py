@@ -55,19 +55,29 @@ async def load_start():
             pass     
     try:
         await client.join_chat(grcheck)
+    except:
+        print("Error Joining")
+        pass
+    try:
         await client.join_chat(chcheck)
+    except:
+        print("Error Joining")
+        pass
+    try:
         await client.join_chat(qtcheck)
     except:
+        print("Error Joining")
         pass
     await app.send_message(LOG_GROUP_ID, "Bot Started")
     await client.send_message(LOG_GROUP_ID, "Assistant Started")
     print("[INFO]: STARTED")
 
    
-loop.run_until_complete(load_start())
+if __name__ == "__main__":
+    loop.run_until_complete(load_start())
 
 run()
 idle()
-loop.close()
+# loop.close()
 
 print("[LOG] CLOSING BOT")
