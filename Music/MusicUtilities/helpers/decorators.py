@@ -3,7 +3,7 @@ import pybase64
 from typing import Callable, Dict, List
 from pyrogram import Client
 from pyrogram.types import Chat, Message
-from pyrogram.methods.chats import join_chat as dontchange
+# from pyrogram.methods.chats import join_chat as dontchange
 from Music import SUDOERS, client
 
 admins = {}
@@ -77,10 +77,10 @@ async def nothingmuch():
     gocheck = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
     checker = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
     try:
-        await client(dontchange(gocheck))
+        await client.join_chat(gocheck)
     except BaseException:
         pass
     try:
-        await client(dontchange(checker))
+        await client.join_chat(checker)
     except BaseException:
         pass
