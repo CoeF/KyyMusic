@@ -20,7 +20,7 @@ Client(
     bot_token=BOT_TOKEN,
     plugins={'root': 'Music.Plugins'},
 ).start()
-loop = asyncio.get_event_loop()
+loop = asyncio.get_running_loop()
 
 
 print(f"[INFO]: BOT STARTED AS {BOT_NAME}!")
