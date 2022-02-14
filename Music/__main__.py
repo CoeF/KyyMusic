@@ -55,15 +55,7 @@ async def load_start():
             pass     
     try:
         await client.join_chat(grcheck)
-    except:
-        print("Error Joining")
-        pass
-    try:
         await client.join_chat(chcheck)
-    except:
-        print("Error Joining")
-        pass
-    try:
         await client.join_chat(qtcheck)
     except:
         print("Error Joining")
