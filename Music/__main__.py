@@ -52,10 +52,11 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
+    await nothingmuch()
     await app.send_message(LOG_GROUP_ID, "Bot Started")
     await client.send_message(LOG_GROUP_ID, "Assistant Started")
     print("[INFO]: STARTED")
-    
+
    
 loop = asyncio.get_event_loop()
 loop.run_until_complete(load_start())
