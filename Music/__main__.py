@@ -20,6 +20,7 @@ Client(
     bot_token=BOT_TOKEN,
     plugins={'root': 'Music.Plugins'},
 ).start()
+loop = asyncio.get_event_loop()
 
 
 print(f"[INFO]: BOT STARTED AS {BOT_NAME}!")
@@ -52,15 +53,17 @@ async def load_start():
         except Exception as e:
             print("Error came while clearing db")
             pass     
-    await client.join_chat(grcheck)
-    await client.join_chat(chcheck)
-    await client.join_chat(qtcheck)
+    try:
+        await client.join_chat(grcheck)
+        await client.join_chat(chcheck)
+        await client.join_chat(qtcheck)
+    except:
+        pass
     await app.send_message(LOG_GROUP_ID, "Bot Started")
     await client.send_message(LOG_GROUP_ID, "Assistant Started")
     print("[INFO]: STARTED")
 
    
-loop = asyncio.get_event_loop()
 loop.run_until_complete(load_start())
 
 run()
